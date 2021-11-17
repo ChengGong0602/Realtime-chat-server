@@ -5,6 +5,7 @@ const db = knex(config.development)
 module.exports = {     
   getAll,
   getOne,
+  getRoom,
   insert,
   update,
   remove
@@ -19,6 +20,12 @@ function getOne (id) {
   return db('users')
     .select('*')
     .where('id', id)
+}
+
+function getRoom (room_name) {
+  return db('users')
+    .select('*')
+    .where('room_name', room_name)
 }
 
 function insert (user) {

@@ -36,13 +36,7 @@ io.on('connect', (socket) => {
     const user = getUser(socket.id);
 
     io.to(user.room).emit('message', formatMessage(user.name, message));
-    console.log("user.room--->", user.room);
-    console.log("user.name--->", user.name);
-    console.log("message--->", message);
-    console.log();
-    start(user.name,user.room, message );
-    
-
+    db_insert(user.name, user.room, message );       
     callback();
   });
 
@@ -59,16 +53,17 @@ io.on('connect', (socket) => {
 server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));
 
 
-const start = async function(user_name,room_name, message) {
+const db_insert = async function(user_name,room_name, message) {
   try {
     console.log("db inserting ==>:",user_name);
       const users = await db.insert({
         user_name: user_name,
         room_name: room_name,
         message: message,
-        created_at: new Date('2021-06-26 14:26:16 UTC')
+        created_at: new Date()
       });
     } catch (error) {
       console.log("error==>:",error);
     }
 }
+
