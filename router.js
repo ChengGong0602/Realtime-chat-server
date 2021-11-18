@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
   res.send({ response: "Server is up and running." }).status(200);
 });
 
-router.get("/api", (req, res) => {
-  res.send({ response: "Server is up and running at 50000." }).status(200);
+router.get("/apitest", (req, res) => {
+  res.send({ response: "Server is up and running at 5000." }).status(200);
 });
 
 router.post('/api/roomData', async function(req, res){
