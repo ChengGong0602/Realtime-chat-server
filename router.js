@@ -16,6 +16,10 @@ router.get("/", (req, res) => {
   res.send({ response: "Server is up and running." }).status(200);
 });
 
+router.get("/api", (req, res) => {
+  res.send({ response: "Server is up and running at 50000." }).status(200);
+});
+
 router.post('/roomData', async function(req, res){
   try {
     let body = req.body;  // body parser middleware   
