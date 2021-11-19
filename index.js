@@ -11,8 +11,7 @@ const db = require('./data/db-config')
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server, {
-  path: "/socket.io"});
+const io = socketio(server);
 
 app.use(cors());
 app.use(router);
